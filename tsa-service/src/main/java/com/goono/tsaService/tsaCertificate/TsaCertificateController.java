@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class TsaCertificateController {
 	private final TsaCertificateService tsaCertificateService;
 
-	@PostMapping("/create/${hash}")
+	@PostMapping("/create/{hash}")
 	public ResponseEntity<String> create(@PathVariable("hash") String hash) {
 		this.tsaCertificateService.create(hash);
 		return ResponseEntity.status(HttpStatus.CREATED).body("created successfully");
