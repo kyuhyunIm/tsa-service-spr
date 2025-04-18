@@ -1,13 +1,12 @@
-package com.mysite.sbb;
+package com.goono.tsaService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TsaServiceApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(TsaServiceApplication.class, args);
 	}
-d
 }
