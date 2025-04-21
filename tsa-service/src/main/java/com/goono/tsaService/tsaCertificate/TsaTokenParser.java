@@ -3,6 +3,8 @@ package com.goono.tsaService.tsaCertificate;
 import org.bouncycastle.asn1.*;
 import org.bouncycastle.asn1.x509.*;
 import org.bouncycastle.util.encoders.Base64;
+import org.springframework.stereotype.Component;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -10,6 +12,7 @@ import java.security.MessageDigest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Component
 public class TsaTokenParser {
     public TsaCertificate parse(String inputBase64) throws Exception {
         byte[] decoded = Base64.decode(inputBase64);
