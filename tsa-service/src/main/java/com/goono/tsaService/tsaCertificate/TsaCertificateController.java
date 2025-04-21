@@ -14,19 +14,12 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class TsaCertificateController {
 	private final TsaCertificateService tsaCertificateService;
-	private final TsaRunner tsaRunner;
 		
 	
 	@PostMapping("/create/{hash}")
 	public ResponseEntity<String> create(@PathVariable("hash") String hash) {
-		
 		try {
-			tsaRunner.ready();
-			String tsaToken = tsaRunner.run(hash);
-			
-			// TODO :: tsa_service.generateTsaToken 해야함
-			// this.tsaCertificateService.create(hash);
-			
+			tsaCertificateService.create(hash);
 			
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body("created successfully");	
