@@ -3,6 +3,10 @@
         <input type="text" id="hashInput" name="hash" placeholder="Enter research file hash value" />
         <input type="submit" value="Submit" />
     </form>
+	
+	<div th:each="tsaCertificate, index : ${tsaCertificateList}">
+		<span th:text="TSA 인증 정보 : ${tsaCertificate.serialNumber} | ${tsaCertificate.policy} |${tsaCertificate.timestamp}"></span>
+	</div>
 </div>
 
 <script>
