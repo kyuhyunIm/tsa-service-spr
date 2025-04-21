@@ -1,5 +1,7 @@
 package com.goono.tsaService.tsaCertificate;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -15,5 +17,9 @@ public class TsaCertificateService {
 		String tsaToken = tsaRunner.run(hash);
 		TsaCertificate result = tsaTokenParser.parse(tsaToken);
 		tsaCertificateRepository.save(result);
+	}
+	
+	public List<TsaCertificate> getList() {
+		return tsaCertificateRepository.findAll();
 	}
 }
