@@ -14,17 +14,15 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class TsaCertificateController {
 	private final TsaCertificateService tsaCertificateService;
-		
+
 	@PostMapping("/create/{hash}")
 	public ResponseEntity<String> create(@PathVariable("hash") String hash) {
 		try {
 			tsaCertificateService.create(hash);
-			
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body("created successfully");	
-		} catch(Exception error) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("failed to create tsaToken : " + error);
+
+			return ResponseEntity.status(HttpStatus.CREATED).body("created successfully");
+		} catch (Exception error) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create tsaToken : " + error);
 		}
 	}
 }

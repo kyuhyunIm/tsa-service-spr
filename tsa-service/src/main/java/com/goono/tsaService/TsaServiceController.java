@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TsaServiceController {
 	private final TsaCertificateService tsaCertificateService;
-	
+
 	@GetMapping("/")
 	public String root(Model model) {
 		List<TsaCertificate> tsaCertificateList = tsaCertificateService.getList();

@@ -1,23 +1,23 @@
 <div>
-    <form method="post" id="tsaCertificateForm">
-        <input style="width: 300px;" type="text" id="hashInput" name="hash" placeholder="Enter research file hash value" />
-        <input type="submit" value="Submit" />
-    </form>
-	
-	<div 
-		th:each="tsaCertificate, index : ${tsaCertificateList}"
-		style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;"
-	>
-		<span th:text="TSA Certificate Info : ${tsaCertificate.serialNumber} | ${tsaCertificate.policy} |${tsaCertificate.timestamp}"></span>
+	<!-- 입력 폼 -->
+	<input style="width: 300px;" type="text" id="hashInput" name="hash" placeholder="Enter research file hash value" />
+	<button id="submitBtn">Submit</button>
+
+	<!-- TSA Certificates 목록 표시 -->
+	<div th:each="tsaCertificate, index : ${tsaCertificateList}"
+		style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+		<span
+			th:text="TSA Certificate Info : ${tsaCertificate.serialNumber} | ${tsaCertificate.policy} |${tsaCertificate.timestamp}"></span>
 	</div>
 </div>
 
 <script>
-    document.getElementById('tsaCertificateForm').onsubmit = function(e) {
-        e.preventDefault();
-        const hashValue = document.getElementById('hashInput').value;
-        const actionUrl = '/tsaCertificate/create/' + encodeURIComponent(hashValue); 
-        this.action = actionUrl;
-        this.submit();
-    }
+	document.getElementById('submitBtn').addEventListener('click', function () {
+		const hashValue = document.getElementById('hashInput').value;
+		const actionUrl = '/tsaCertificate/create/' + encodeURIComponent(hashValue);
+
+		fetch(actionUrl, {method: 'POST'})
+			.then(console.log)
+			.catch(console.log);
+	});
 </script>

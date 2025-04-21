@@ -21,48 +21,48 @@ import com.goono.tsaService.tsaCertificate.TsaTokenParser;
 
 class TsaCertificateServiceTest {
 
-    @Mock
-    private TsaRunner tsaRunner;
+	@Mock
+	private TsaRunner tsaRunner;
 
-    @Mock
-    private TsaCertificateRepository tsaCertificateRepository;
+	@Mock
+	private TsaCertificateRepository tsaCertificateRepository;
 
-    @Mock
-    private TsaTokenParser tsaTokenParser;
+	@Mock
+	private TsaTokenParser tsaTokenParser;
 
-    @InjectMocks
-    private TsaCertificateService tsaCertificateService;
+	@InjectMocks
+	private TsaCertificateService tsaCertificateService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
+	@BeforeEach
+	void setUp() {
+		MockitoAnnotations.openMocks(this);
+	}
 
-    @Test
-    void testCreate_shouldCallDependenciesAndSaveCertificate() throws Exception {
-        String hash = "dummyHash";
-        String dummyToken = "dummyToken";
-        TsaCertificate dummyCertificate = new TsaCertificate();
+	@Test
+	void testCreate_shouldCallDependenciesAndSaveCertificate() throws Exception {
+		String hash = "dummyHash";
+		String dummyToken = "dummyToken";
+		TsaCertificate dummyCertificate = new TsaCertificate();
 
-        when(tsaRunner.run(hash)).thenReturn(dummyToken);
-        when(tsaTokenParser.parse(dummyToken)).thenReturn(dummyCertificate);
+		when(tsaRunner.run(hash)).thenReturn(dummyToken);
+		when(tsaTokenParser.parse(dummyToken)).thenReturn(dummyCertificate);
 
-        tsaCertificateService.create(hash);
+		tsaCertificateService.create(hash);
 
-        verify(tsaRunner).ready();
-        verify(tsaRunner).run(hash);
-        verify(tsaTokenParser).parse(dummyToken);
-        verify(tsaCertificateRepository).save(dummyCertificate);
-    }
+		verify(tsaRunner).ready();
+		verify(tsaRunner).run(hash);
+		verify(tsaTokenParser).parse(dummyToken);
+		verify(tsaCertificateRepository).save(dummyCertificate);
+	}
 
-    @Test
-    void testGetList_shouldReturnAllCertificates() {
-        List<TsaCertificate> dummyList = Arrays.asList(new TsaCertificate(), new TsaCertificate());
-        when(tsaCertificateRepository.findAll()).thenReturn(dummyList);
+	@Test
+	void testGetList_shouldReturnAllCertificates() {
+		List<TsaCertificate> dummyList = Arrays.asList(new TsaCertificate(), new TsaCertificate());
+		when(tsaCertificateRepository.findAll()).thenReturn(dummyList);
 
-        List<TsaCertificate> result = tsaCertificateService.getList();
+		List<TsaCertificate> result = tsaCertificateService.getList();
 
-        assertEquals(2, result.size());
-        verify(tsaCertificateRepository).findAll();
-    }
+		assertEquals(2, result.size());
+		verify(tsaCertificateRepository).findAll();
+	}
 }
