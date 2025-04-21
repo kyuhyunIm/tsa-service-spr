@@ -1,4 +1,4 @@
-package com.mysite.sbb;
+package com.goono.tsaService;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
