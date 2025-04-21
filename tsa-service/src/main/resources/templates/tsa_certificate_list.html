@@ -1,3 +1,16 @@
 <div>
-	<h2>화면 구현중...</h2>
+    <form method="post" id="tsaCertificateForm">
+        <input type="text" id="hashInput" name="hash" placeholder="Enter hash value" />
+        <input type="submit" value="Submit" />
+    </form>
 </div>
+
+<script>
+    document.getElementById('tsaCertificateForm').onsubmit = function(e) {
+        e.preventDefault();
+        const hashValue = document.getElementById('hashInput').value;
+        const actionUrl = '/tsaCertificate/create/' + encodeURIComponent(hashValue); 
+        this.action = actionUrl;
+        this.submit();
+    }
+</script>
