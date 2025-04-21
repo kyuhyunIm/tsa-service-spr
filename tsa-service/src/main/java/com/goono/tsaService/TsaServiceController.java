@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TsaServiceController {
 	@GetMapping("/")
-	@ResponseBody
 	public String root() {
-		return "tsa-service is running";
+		return "tsa_certificate_list";
 	}
 }
