@@ -1,11 +1,14 @@
 <div>
     <form method="post" id="tsaCertificateForm">
-        <input type="text" id="hashInput" name="hash" placeholder="Enter research file hash value" />
+        <input style="width: 300px;" type="text" id="hashInput" name="hash" placeholder="Enter research file hash value" />
         <input type="submit" value="Submit" />
     </form>
 	
-	<div th:each="tsaCertificate, index : ${tsaCertificateList}">
-		<span th:text="TSA 인증 정보 : ${tsaCertificate.serialNumber} | ${tsaCertificate.policy} |${tsaCertificate.timestamp}"></span>
+	<div 
+		th:each="tsaCertificate, index : ${tsaCertificateList}"
+		style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;"
+	>
+		<span th:text="TSA Certificate Info : ${tsaCertificate.serialNumber} | ${tsaCertificate.policy} |${tsaCertificate.timestamp}"></span>
 	</div>
 </div>
 
