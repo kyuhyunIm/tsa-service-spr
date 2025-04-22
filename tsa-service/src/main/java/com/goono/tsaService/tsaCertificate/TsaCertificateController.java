@@ -22,6 +22,7 @@ public class TsaCertificateController {
 
 			return ResponseEntity.status(HttpStatus.CREATED).body("created successfully");
 		} catch (Exception error) {
+			System.out.println(error);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create tsaToken : " + error);
 		}
 	}
