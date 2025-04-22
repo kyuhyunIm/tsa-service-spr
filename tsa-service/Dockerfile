@@ -1,5 +1,5 @@
-# Java 8 JDK를 포함한 공식 OpenJDK 이미지 사용
-FROM openjdk:8-jdk
+# JDK 21로 변경
+FROM openjdk:21-jdk-slim
 
 # Add Author info
 LABEL maintainer="jidole01@gmail.com"
