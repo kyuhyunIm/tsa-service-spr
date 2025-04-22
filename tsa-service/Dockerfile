@@ -1,5 +1,5 @@
-# Start with a base image containing Java runtime
-FROM java:8
+# Java 8 JDK를 포함한 공식 OpenJDK 이미지 사용
+FROM openjdk:8-jdk
 
 # Add Author info
 LABEL maintainer="jidole01@gmail.com"
