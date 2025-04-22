@@ -15,9 +15,6 @@
 	document.getElementById('submitBtn').addEventListener('click', function () {
 		const hashValue = document.getElementById('hashInput').value;
 		const actionUrl = '/tsaCertificate/create/' + encodeURIComponent(hashValue);
-
-		fetch(actionUrl, {method: 'POST'})
-			.then(console.log)
-			.catch(console.log);
+		fetch(actionUrl, {method: 'POST'});
 	});
 </script>
